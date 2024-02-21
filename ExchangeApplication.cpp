@@ -164,7 +164,7 @@ void OrderBook::process_order(Order &order) {
 
 int OrderBook::execute_trade(Order order_1, Order order_2) {
     if (order_1.quantity == order_2.quantity) {
-        return 22;
+        return 22; 
     }
     int amount_to_trade = min(order_1.quantity, order_2.quantity);
 
@@ -262,9 +262,11 @@ Order validate_order(string order_id, string line) {
 
 // Function to add orders to the order books
 void add_orders(vector<string> order_csv_s) {
+    // Create order books for each instrument
     for (string ins : instruments) {
         orderbooks[ins] = OrderBook();
     }
+    // Process each order
     int order_i = 1;
     string order_id;
     OrderBook orderBook;
@@ -274,12 +276,12 @@ void add_orders(vector<string> order_csv_s) {
         try {
             Order order = validate_order(order_id, line);
             if (!order.is_null()) {
-                order.auto_gen = false;
+                order.auto_gen = false; 
                 orderbooks[order.instrument].process_order(order);
             }
         } catch (const exception &e) {
+            // Print the error message
             cerr << "Error processing order: " << e.what() << endl;
-            // Handle the error, maybe log it, and continue processing other orders
         }
 
         order_i++;

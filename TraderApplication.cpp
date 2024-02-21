@@ -68,6 +68,7 @@ void writeCSV(const string fileName) {
 pair<string, vector<string>> readCSVLines(const string &fileName) {
     ifstream file(fileName);
 
+    // Check if the file is open
     if (!file.is_open()) {
         cerr << "Error opening the file." << endl;
         throw runtime_error("Error opening file");

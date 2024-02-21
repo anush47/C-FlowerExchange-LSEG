@@ -18,12 +18,12 @@ string getCurrentDateTimeFormatted();
 class Order {
 public:
     string client_order_id;
-    string order_id;
-    string instrument;
-    int side;
-    float price;
-    int quantity;
-    bool auto_gen;
+    string order_id; 
+    string instrument; // The instrument to be traded
+    int side; // 1 for buy, 2 for sell
+    float price; // The price at which the order is placed
+    int quantity; // The quantity of the instrument to be traded
+    bool auto_gen; // True if the order_id is auto generated
 
     Order(string client_order_id, string order_id, string instrument, int side, float price, int quantity, bool auto_gen = true);
     Order(const Order &other);
